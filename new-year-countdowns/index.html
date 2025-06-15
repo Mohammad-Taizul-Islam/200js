@@ -1,79 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Digital clock</title>
-  </head>
-  <style>
-    body{
-      margin: 0px;
-      font-family: sans-serif;
-      display: flex;
-      align-items: center;
-      height: 100vh;
-      justify-content: center;
-      background: url("https://unsplash.com/photos/a-close-up-of-a-pink-flower-on-a-tree-YDDK6JI9U5E?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash");
-      background-size: cover;
-      overflow: hidden;
-    }
-  </style>
-  <body>
-    <div class="container">
-      <h2>Digital Clock</h2>
-      <div class="clock">
-        <div>
-          <span id="hours">00</span>
-          <span class="text">Hours</span>
-        </div>
-        <div>
-          <span id="minutes">00</span>
-          <span class="text">Minutes</span>
-        </div>
-        <div>
-          <span id="seconds">00</span>
-          <span class="text">seconds</span>
-        </div>
-        <div>
-          <span id="ampm">AM</span>
-        </div>
-      </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Year CountDown</title>
+  <link rel="stylesheet" href="global.css">
+</head>
+<body>
+  <h2>New Year <span>2026</span> is Coming within</h2>
+  <div class="countdown">
+    <div>
+      <span id="days">00</span>
+      <span class="text">days</span>
+    </div>
+     <div>
+      <span id="hours">00</span>
+      <span class="text">hours</span>
+    </div>
+     <div>
+      <span id="minutes">00</span>
+      <span class="text">minutes</span>
     </div>
 
-    <script>
-      const hourE1 = document.getElementById("hours");
-      const minuteE1 = document.getElementById("minutes");
-      const secondE1 = document.getElementById("seconds");
-
-      const ampmE1 = document.getElementById("ampm");
-
-      const updateClock = () => {
-        let h = new Date().getHours();
-        let m = new Date().getMinutes();
-        let s = new Date().getSeconds();
-
-        let ampm = `AM`;
-
-        if (h > 12) {
-          h = h - 12;
-          ampm = `PM`;
-        }
-
-        h = h < 10 ? "0" + h : h;
-        m = m < 10 ? "0" + m : m;
-        s = s < 10 ? "0" + s : s;
-
-        hourE1.innerText = h;
-        minuteE1.innerText = m;
-        secondE1.innerText = s;
-        ampmE1.innerText = ampm;
-
-        setTimeout(() =>{
-            updateClock();
-        },1000);
-      }
-
-      updateClock();
-    </script>
-  </body>
+     <div>
+      <span id="seconds">00</span>
+      <span class="text">seconds</span>
+    </div>
+  </div>
+  <script src="main.js"></script>
+</body>
 </html>
