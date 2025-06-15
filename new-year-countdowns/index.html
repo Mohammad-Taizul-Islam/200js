@@ -3,134 +3,97 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>New Years Countdown</title>
-    <style>
-      body {
-        margin: 0px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        height: 100vh;
-        justify-content: center;
-        font-family: cursive;
-        background-color: coral;
-        overflow: hidden;
-      }
-
-      .container{
-        padding: 80px;
-        border: 2px solid  rgba(93,97,125,0.2);
-        background-color: lightblue;
-      }
-
-      h2 {
-        color: white;
-        text-align: center;
-        text-transform: uppercase;
-        letter-spacing: 4px;
-      }
-
-      .year {
-        font-size: 5em;
-        color: white;
-        font-weight: bold;
-        text-align: center;
-      }
-
-      .countdown{
-        margin: 30px;
-        background-color: rgba(0,0,0,0.2);
-        width: 100%;
-        color: white;
-        height: 120px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-
-      .countdown div{
-        margin: 0 15px;
-        font-size: 2.5em;
-        font-weight: 500;
-        margin-top: -20px;
-        position: relative;
-        text-align: center;
-        width: 100px;
-      }
-      .countdown div::before{
-        content : "";
-        position: absolute;
-        bottom: -30px;
-        left: 0;
-        font-size: 0.35em;
-        line-height: 35px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        font-weight: bold;
-        width: 100%;
-        height: 35px;
-      }
-
-      .countdown #day::before{
-        content: "Days";
-      }
-      .countdown #hour::before{
-        content: "Hours";
-      }
-
-      .countdown #minute::before{
-        content: "Minutes";
-      }
-
-      .countdown #second::before{
-        content: "Seconds";
-      }
-    </style>
+    <title>Digital clock</title>
   </head>
+  <style>
+    .container{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: coral;
+      margin: 0px;
+      padding: 0px;
+    }
+    .clock {
+      display: flex;
+      padding: 30px 10px;
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 100px 200px;
+    }
+    .clock div{
+      background-color: #494949;
+      padding: 30px 40px;
+      margin: 10px;
+    }
+
+    .clock div>span{
+      display: block;
+    }
+
+    .text{
+      background-color: darkblue;
+      color: #fff;
+      padding: 10px;
+    }
+  </style>
   <body>
     <div class="container">
-      <h2>Countdown to New Year</h2>
-      <div class="year">2026</div>
-      <div class="countdown">
-        <div id="day">00</div>
-        <div id="hour">00</div>
-        <div id="minute">00</div>
-        <div id="second">00</div>
+      <h2>Digital Clock</h2>
+      <div class="clock">
+        <div>
+          <span id="hours">00</span>
+          <span class="text">Hours</span>
+        </div>
+        <div>
+          <span id="minutes">00</span>
+          <span class="text">Minutes</span>
+        </div>
+        <div>
+          <span id="seconds">00</span>
+          <span class="text">seconds</span>
+        </div>
+        <div>
+          <span id="ampm">AM</span>
+        </div>
       </div>
     </div>
 
     <script>
-      const dayE1 = document.getElementById("day");
-      const hourE1 = document.getElementById("hour");
-      const minuteE1 = document.getElementById("minute");
-      const secondE1 = document.getElementById("second");
+      const hourE1 = document.getElementById("hours");
+      const minuteE1 = document.getElementById("minutes");
+      const secondE1 = document.getElementById("seconds");
 
-      const newYearTime = new Date("Jan 1, 2026 00:00:00").getTime();
+      const ampmE1 = document.getElementById("ampm");
 
-      updateCountdown();
+      const updateClock = () => {
+        let h = new Date().getHours();
+        let m = new Date().getMinutes();
+        let s = new Date().getSeconds();
 
-      function updateCountdown() {
-        const now = new Date().getTime();
-        const gap = newYearTime - now;
+        let ampm = `AM`;
 
-        const second = 1000;
-        const minute = second * 60;
-        const hour = minute * 60;
-        const day = hour * 24;
+        if (h > 12) {
+          h = h - 12;
+          ampm = `PM`;
+        }
 
-        const d = Math.floor(gap / day);
-        const h = Math.floor((gap % day) / hour);
-        const m = Math.floor((gap % hour) / minute);
-        const s = Math.floor((gap % minute) / second);
+        h = h < 10 ? "0" + h : h;
+        m = m < 10 ? "0" + m : m;
+        s = s < 10 ? "0" + s : s;
 
-        dayE1.innerText = d;
         hourE1.innerText = h;
         minuteE1.innerText = m;
         secondE1.innerText = s;
+        ampmE1.innerText = ampm;
 
-        setTimeout(updateCountdown, 1000);
+        setTimeout(() =>{
+            updateClock();
+        },1000);
       }
+
+      updateClock();
     </script>
   </body>
 </html>
