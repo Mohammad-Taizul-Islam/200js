@@ -25,14 +25,20 @@
         display: flex;
         flex-direction: column;
       }
-      input[type="number"],
-      input[type="submit"] {
+      input[type="number"] {
         margin: 0 auto;
         width: 60%;
-        padding: 10px 14px;
+        padding: 14px 22px;
         border: 1px solid #ccc;
       }
-      #result{
+      input[type="submit"] {
+        border-color: aqua;
+        margin: 0 auto;
+        width: 62.5%;
+        padding: 14px 22px;
+        color: red;
+      }
+      #result {
         color: red;
         font-size: 33px;
       }
@@ -47,26 +53,24 @@
         <input type="number" name="bill" id="bill" />
         <label for="tip">Tip percentage:</label>
         <input type="number" name="tip" id="tip" />
-        <input type="submit" value="submit" id="submit"/>
+        <input type="submit" value="submit" id="submit" />
       </form>
-      <span id="result">
-
-      </span>
+      <span id="result"> </span>
     </div>
     <script>
-        const btnE1 = document.getElementById("submit");
-        const billE1=document.getElementById("bill");
-        const tipE1 = document.getElementById("tip");
+      const btnE1 = document.getElementById("submit");
+      const billE1 = document.getElementById("bill");
+      const tipE1 = document.getElementById("tip");
 
-        const totalSpan = document.getElementById("result");
+      const totalSpan = document.getElementById("result");
 
-        const calculateTotalBill = () =>{
-            const billValue =billE1.value;
-            const tipValue = tipE1.value;
-            const totalValue = billValue * (1+tipValue/100);
-            totalSpan.innerText = totalValue.toFixed(2);
-        }
-        btnE1.addEventListener("click",calculateTotalBill);
+      const calculateTotalBill = () => {
+        const billValue = billE1.value;
+        const tipValue = tipE1.value;
+        const totalValue = billValue * (1 + tipValue / 100);
+        totalSpan.innerText = totalValue.toFixed(2);
+      };
+      btnE1.addEventListener("click", calculateTotalBill);
     </script>
   </body>
 </html>

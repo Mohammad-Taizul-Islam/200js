@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Age Calculator</title>
+    <style>
+        body{
+            margin: 0 auto;
+           display: flex;
+           justify-content: center;
+           height: 100vh;
+        }
+        .calculation_container{
+            width: 40%;
+            height: 40%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        button{
+            padding: 10px 14px;
+            background-color: darkcyan;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="calculation_container">
+      <h1>Age Calculator</h1>
+      <label for="ageInput"></label>
+      <input type="date" name="age" id="ageInput" required />
+      <button type="button" id="btn_cal">Calculate Age</button>
+      <p id="result_age"></p>
+    </div>
+    <script>
+      const birthDateE1 = document.querySelector("#ageInput");
+      const calE1 = document.querySelector("#btn_cal");
+      const resultE1 = document.querySelector("#result_age");
+      const calculateAge = () => {
+
+        const birthday = birthDateE1.value;
+        const birthDay = new Date(birthday);
+        const today = new Date();
+        if(birthDay === 0){
+            resultE1.innerHTML = `Please enter your birthday first`;
+            resultE1.style.color = "red";
+        }
+
+
+        let years =  today.getFullYear() - birthDay.getFullYear();
+        let months = today.getMonth() - birthDay.getMonth();
+        let days =  today.getDay() - birthDay.getDay();
+
+        if(days < 0){
+            months--;
+            const lastMonth = new Date(today.getFullYear(),today.getMonth(),0);
+            days+= lastMonth.getDate();
+        }
+
+        if(months < 0){
+            years--;
+            months +=12;
+        }
+
+        resultE1.innerHTML = `Your age is ${years} years and ${months} months and ${days}`;
+
+      };
+      calE1.addEventListener("click", calculateAge);
+    </script>
+  </body>
+</html>
