@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loan Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="calculator">
+    <h1>Loan Calculator</h1>
+    
+    <form id="loan-form">
+      <div class="form-group">
+        <label for="amount">Loan Amount ($):</label>
+        <input type="number" id="amount" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="interest">Annual Interest Rate (%):</label>
+        <input type="number" id="interest" step="0.01" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="years">Loan Term (years):</label>
+        <input type="number" id="years" required>
+      </div>
+      
+      <button type="submit" class="btn">Calculate</button>
+    </form>
+    
+    <div id="results" class="hidden">
+      <h2>Results</h2>
+      <div id="loading">
+        <img src="spinner.gif" alt="Loading...">
+      </div>
+      <div id="summary">
+        <p>Monthly Payment: <span id="monthly-payment"></span></p>
+        <p>Total Payment: <span id="total-payment"></span></p>
+        <p>Total Interest: <span id="total-interest"></span></p>
+      </div>
+      
+      <h3>Amortization Schedule</h3>
+      <table id="schedule">
+        <thead>
+          <tr>
+            <th>Month</th>
+            <th>Payment</th>
+            <th>Principal</th>
+            <th>Interest</th>
+            <th>Balance</th>
+          </tr>
+        </thead>
+        <tbody id="schedule-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>

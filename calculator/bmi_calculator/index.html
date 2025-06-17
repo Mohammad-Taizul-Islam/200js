@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin:0;
+            background-color: aqua;
+            
+        }
+        .calculator{
+            display:flex;
+            flex-direction: column;
+            margin: 0 auto;
+            width: 40%;
+            background-color: aquamarine;
+            padding: 20px;
+        }
+        input{
+            display: block;
+            padding:12px 18px;
+        }
+        input[type=button]{
+            background-color: yellowgreen;
+            color: #fff;
+            text-transform: uppercase;;
+        }
+        p{
+            padding: 12px 18px;
+            background-color: #fff;
+            color: brown;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h1>BMI Calculator</h1>
+        <label for="heightInput">Height (in cm)</label>
+        <input type="number" name="height" id="heightInput" onchange="calculations()">
+        <label for="weight">Weight (in kg)</label>
+        <input type="number" name="weight" id="weightInput" onchange="calculations()">
+        <input type="button" value="calculate bmi" id="calculate_bmi">
+        <p id="bmiResult"></p>
+    </div>
+    <script>
+        const calculations = ()=>{
+            const heightE1 = document.querySelector("#heightInput").value;
+            const weightE1 = document.querySelector("#weightInput").value;
+            const resultE1 = document.querySelector("#bmiResult");
+
+            let bmi = weightE1 / Math.pow(heightE1/100,2).toFixed(2);
+
+            resultE1.innerHTML = `Your BMI is ${bmi} unite`
+            resultE1.style.display = 'block';
+        }
+
+       document.querySelector("#calculate_bmi").addEventListener("click",calculations);
+    </script>
+</body>
+</html>

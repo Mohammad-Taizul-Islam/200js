@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Calculator Template</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h1>Loan Calculator</h1>
+        <label for="amount">Loan Amount $</label>
+        <input type="number" onchange="calculateLoan()"  name="amount" id="amount" min="1" max="1000000" value="1000">
+        <label for="rate">Interest Rate %</label>
+        <input type="number" onchange="calculateLoan()" name="rate" id="rate" min="0" max="100" value="10" step="0.1" >
+        <label for="month">Months to Pay </label>
+        <input type="number" onchange="calculateLoan()" name="month" id="month" min="6" max="48" value="12">
+
+        <p class="interest"></p>
+
+    </div>
+    <script>
+        const calculateLoan = () =>{
+            const loanAmount = document.querySelector("#amount").value;
+            const loanRate = document.querySelector("#rate").value;
+            const payMonths = document.querySelector("#month").value;
+
+
+            const interestToPay = document.querySelector(".interest");
+
+            let interest = loanAmount ( 1 + loanRate*payMonths);
+            
+
+
+        }
+    </script>
+</body>
+</html>
