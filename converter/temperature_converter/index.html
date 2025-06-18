@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Temperature Converter</title>
+    <style>
+      body {
+        display: flex;
+        height: 100vh;
+        margin: auto;
+      }
+      .converter {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: auto;
+        padding: 40px;
+        background-color: cyan;
+      }
+      label {
+        display: block;
+        margin: 10px;
+        padding-right: 20px;
+      }
+      input[type="number"] {
+        padding: 10px 18px;
+        width: 100%;
+        border: none;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="converter">
+      <h1>Temperature Converter</h1>
+      <label for="celsiusInput">
+        Celsius :
+        <input
+          type="number"
+          name="celsius"
+          id="celsiusInput"
+          onchange="convert_temperature(event)"
+          placeholder="Enter Temperature"
+        />
+      </label>
+      <label for="fahrenheitInput">
+        Fahrenheit :
+        <input
+          type="number"
+          name="fahrenheit"
+          id="fahrenheitInput"
+          onchange="convert_temperature(event)"
+          placeholder="Enter Temperature"
+        />
+      </label>
+      <label for="kelvinInput">
+        Kelvin :
+        <input
+          type="number"
+          name="Kelvin"
+          id="kelvinInput"
+          onchange="convert_temperature(event)"
+          placeholder="Enter Temperature"
+        />
+      </label>
+    </div>
+    <script>
+
+        //variables...
+      const celsiusInputE1 = document.querySelector("#celsiusInput");
+      const fahrenheitInputE1 = document.querySelector("#fahrenheitInput");
+      const kelvinInputE1 = document.querySelector("#kelvinInput");
+
+
+      const convert_temperature = (event) => {
+        const currentValue = +event.target.value;
+
+        switch(event.target.name){
+            
+            case "celsius" :
+                kelvinInputE1.value = (currentValue + 273.15).toFixed(2);
+                fahrenheitInputE1.value = (currentValue * (9/5)) +32;
+                break;
+                case "fahrenheit" : 
+                celsiusInputE1.value = (currentValue -32) * (5/9);
+                kelvinInputE1.value = (currentValue - 32) * (5/9) + 273.15;
+                break;
+
+                case "kelvin" : 
+                celsiusInputE1.value = (currentValue - 273.15);
+                fahrenheitInputE1.value = (currentValue - 273.15) * (9/5) + 32;
+                break;
+        }
+      };
+    </script>
+  </body>
+</html>
