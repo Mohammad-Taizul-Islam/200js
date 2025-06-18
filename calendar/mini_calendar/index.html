@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mini Calendar</title>
+    <style>
+
+        body{
+            margin: auto;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: cadetblue;
+        }
+        .calendar{
+            text-align: center;
+            background-color: antiquewhite;
+            padding: 20px;
+            padding-top: 0;
+            width: 20%;
+            box-sizing: border-box;
+        }
+        #month{
+            width: 100%;
+            background-color: coral ;
+            color: #f1f1f1;
+            padding: 18px 22px;
+            margin: 0;
+        }
+        #date{
+            font-size: 62px;
+            font-weight: 900;
+        }
+    </style>
+  </head>
+
+  <body>
+    <div class="calendar">
+      <p id="month"></p>
+      <p id="day"></p>
+      <p id="date"></p>
+      <p id="year"></p>
+    </div>
+    <script>
+      const today = new Date();
+
+      const month = today.getMonth() + 1;
+      const day = today.getDay();
+      const year = today.getFullYear();
+      const date = today.getDate();
+
+      const daysOfWeek = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ];
+
+      const monthNames = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
+
+      const monthName = monthNames[month];
+      const dayName = daysOfWeek[day];
+
+      console.log(month);
+      console.log(year);
+
+      document.querySelector("#month").innerHTML = monthName;
+      document.querySelector("#day").innerHTML = dayName;
+      document.querySelector("#date").innerHTML = date;
+      document.querySelector("#year").innerHTML = year;
+
+
+    </script>
+  </body>
+</html>
