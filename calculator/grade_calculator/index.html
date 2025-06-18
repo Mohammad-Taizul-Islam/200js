@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade Calculator</title>
+    <style>
+        body{
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: bisque;
+        }
+        .grade-calculator{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: #0ece84;
+            height: 80%;
+            padding: 20px;
+        }
+        input[type=text]{
+            padding: 10px 14px;
+            margin: 5px;
+            border-radius: 5px;
+        }
+        input[type=button]{
+            padding: 14px 18px;
+            border-radius: 8px;
+            border: none;
+            background-color: rgb(152, 209, 141);
+            color: #f1f1f1;
+            text-transform: uppercase;
+        }
+        #grade-result{
+            padding: 14px 20px;
+            margin: 5px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="grade-calculator">
+        <h1>Secondary Grade Calculator</h1>
+        <label for="banglaInput">Bangla Literature : </label>
+        <input type="text" name="banglaInput" id="banglaInput" placeholder="Enter Bangla's Mark">
+        <label for="banglaInput">English Literature : </label>
+        <input type="text" name="englishInput" id="englishInput" placeholder="Enter English's Mark">
+        <label for="mathInput">Higher Math : </label>
+        <input type="text" name="mathInput" id="mathInput" placeholder="Enter Math's Mark">
+        <label for="biologyInput">Biology :</label>
+        <input type="text" name="biologyInput" id="biologyInput" placeholder="Enter biology's Mark">
+        <label for="physicsInput"> Physics : </label>
+        <input type="text" name="physicsInput" id="physicsInput" placeholder="Enter Physics's Mark">
+        <label for="chemistryInput">Chemistry : </label>
+        <input type="text" name="chemistryInput" id="chemistryInput" placeholder="Enter chemistry's Mark">
+        <input type="button" value="calculate grade" id="calculate_button" onclick="calculate_grade()">
+        <input type="text" id="grade-result" >
+    </div>
+    <script>
+        const calculate_grade = () => {
+            // Get values when button is clicked
+            const bangla_mark = Number(document.querySelector("#banglaInput").value) || 0;
+            const english_mark = Number(document.querySelector("#englishInput").value) || 0;
+            const math_mark = Number(document.querySelector("#mathInput").value) || 0;
+            const physics_mark = Number(document.querySelector("#physicsInput").value) || 0;
+            const chemistry_mark = Number(document.querySelector("#chemistryInput").value) || 0;
+            const biology_mark = Number(document.querySelector("#biologyInput").value) || 0;
+
+            const result = document.getElementById("grade-result");
+            
+            // Calculate average
+            let average = (bangla_mark + english_mark + math_mark + physics_mark + chemistry_mark + biology_mark) / 6;
+            let grade = "";
+            
+            // Determine grade
+            if(average >= 80 && average <= 100){
+                grade = 'A+';
+            } else if (average >= 70 && average < 80) {
+                grade = 'A';
+            } else if (average >= 60 && average < 70) {
+                grade = 'A-';
+            } else if (average >= 50 && average < 60) {
+                grade = 'B';
+            } else if (average >= 40 && average < 50) {
+                grade = 'C';
+            } else if (average >= 33 && average < 40) {
+                grade = 'D';
+            } else {
+                grade = 'F';
+            }
+            
+            // Display result
+            result.value = `Total marks: ${(average*6).toFixed(2)}, Average: ${average.toFixed(2)}, Grade: ${grade}`;
+        }
+    </script>
+</body>
+</html>
