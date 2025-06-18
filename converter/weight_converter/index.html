@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weight Converter</title>
+    <style>
+
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .converter{
+            background-color: cadetblue;
+            width: 400px;
+            height: 200px;
+           text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="converter">
+        <h1>Weight Converter</h1>
+        <label for="weightInput">Pounds</label>
+        <input type="number" id="weightInput" placeholder="Enter number" onchange="poundToKg()">
+        <p id="outPutKg"></p>
+    </div>
+    <script>
+        function poundToKg(){
+            const weightE1 = document.querySelector("#weightInput").value;
+            const result = document.querySelector("#outPutKg");
+
+
+            let kg = weightE1*0.453592;
+
+            result.innerHTML = `${weightE1} pound to ${kg} kg`;
+        }
+    </script>
+</body>
+</html>
