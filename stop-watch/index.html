@@ -4,20 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Stop Watch</title>
-    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="global.css" />
   </head>
   <body>
-    <div class="container">
-      <div class="output">
-        <span class="hour">00</span> : <span class="minute">00</span> :
-        <span class="second">00</span>
-      </div>
-      <div class="input">
-        <button class="btn btn-start">start</button>
-        <button class="btn btn-pause">pause</button>
-        <button class="btn btn-resume" style="display: none">resume</button>
-        <button class="btn btn-restart">restart</button>
-      </div>
+    <div id="timer">00:00:00</div>
+    <div id="buttons">
+      <button id="start" type="button">Start</button>
+      <button id="stop" type="button">Stop</button>
+      <button id="reset" type="button">Reset</button>
     </div>
     <script src="main.js"></script>
   </body>
